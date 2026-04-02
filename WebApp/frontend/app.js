@@ -20,11 +20,16 @@ const btnRun = document.getElementById("btnRun");
 const runStatus = document.getElementById("runStatus");
 
 btnParse.addEventListener("click", async () => {
-    const url = formUrlInput.value.trim();
+    let url = formUrlInput.value.trim();
     if (!url.includes("docs.google.com/forms")) {
         showError("Please enter a valid Google Form URL");
         return;
     }
+
+    // Sanitize: convert /edit to /viewform so fetch doesn't hit CORS redirect
+    url = url.replace(/\/edit(\?.*)?$/, "/viewform");
+    url = url.replace(/\/view(\?.*)?$/, "/viewform");
+    formUrlInput.value = url;
 
     hideError();
     setLoading(btnParse, true);
