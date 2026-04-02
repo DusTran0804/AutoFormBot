@@ -10,12 +10,6 @@ RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
     unzip \
-    fonts-liberation \
-    libnss3 \
-    libgconf-2-4 \
-    libxss1 \
-    libappindicator1 \
-    libasound2 \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' \
     && apt-get update \
@@ -41,4 +35,4 @@ COPY WebApp/backend/ ./WebApp/backend/
 EXPOSE 8000
 
 # Chạy máy chủ Uvicorn FastAPI
-CMD ["uvicorn", "WebApp.backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn WebApp.backend.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
