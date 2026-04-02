@@ -1,5 +1,5 @@
 // Thay thế CHUỖI NÀY bằng URL máy chủ Render.com của bạn sau khi deploy (VD: https://autoformbot-api.onrender.com/api)
-const CLOUD_API_URL = "https://your-backend-app-name.onrender.com/api";
+const CLOUD_API_URL = "https://autoformbot-api.onrender.com/api";
 
 const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 const API_URL = isLocalhost ? "http://127.0.0.1:8000/api" : CLOUD_API_URL;
