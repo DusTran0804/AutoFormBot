@@ -5,13 +5,9 @@ FROM python:3.10-slim
 ENV PYTHONUNBUFFERED=1
 ENV DISPLAY=:99
 
-# Cài đặt các gói hệ thống cần thiết và Google Chrome
+# Cài đặt các gói hệ thống cơ bản
 RUN apt-get update && apt-get install -y \
     wget \
-    unzip \
-    && wget -q -O chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && apt-get install -y ./chrome.deb \
-    && rm chrome.deb \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

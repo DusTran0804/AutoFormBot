@@ -1,209 +1,135 @@
 import sys
 import os
-import time
-import unicodedata
+import requests
+import json
+import re
+import logging
 
-# Thêm đường dẫn Src vào sys.path để import utils
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../Src')))
-from utils import get_driver, logger, retry_click
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+logger = logging.getLogger(__name__)
 
 class WebFormParser:
     def __init__(self, url, headless=True):
-        self.url = url
+        self.url = self._clean_url(url)
         self.headless = headless
 
+    def _clean_url(self, url):
+        # Đảm bảo dùng link viewform thay vì edit để parse chính xác
+        if "/edit" in url:
+            url = url.split("/edit")[0] + "/viewform"
+        return url
+
     def parse(self):
-        logger.info(f"Đang khởi động Web Parser cho URL: {self.url}")
-        driver = get_driver(headless=self.headless)
+        logger.info(f"Đang khởi động Web Parser (HTTP GET) cho URL: {self.url}")
         form_structure = {
             "form_url": self.url,
             "questions": []
         }
         
         try:
-            driver.get(self.url)
-            driver.implicitly_wait(0)
-            time.sleep(3)
+            resp = requests.get(self.url, timeout=10)
+            resp.raise_for_status()
             
-            page_num = 1
-            while True:
-                logger.info(f"\n--- ĐANG QUÉT TRANG {page_num} ---")
-                try:
-                    WebDriverWait(driver, 10).until(
-                        lambda d: d.find_elements(By.XPATH, "//div[@role='listitem']") or d.find_elements(By.XPATH, "//div[@role='button']")
-                    )
-                except: pass
-                time.sleep(1)
-                
-                items = driver.find_elements(By.XPATH, "//div[@role='listitem']")
-                
-                for item in items:
-                    try:
-                        if not item.is_displayed():
-                            continue
-                            
-                        heading = item.find_element(By.XPATH, ".//div[@role='heading']")
-                        question_text = heading.text.strip()
-                        if question_text.endswith(" *"): question_text = question_text[:-2]
-                        elif question_text.endswith("*"): question_text = question_text[:-1]
-                        question_text = question_text.strip()
-                    except:
-                        continue
-                    
-                    if not question_text: continue
-                    
-                    # Tránh duplicate
-                    if any(q['id'] == question_text for q in form_structure["questions"]):
-                        continue
-
-                    choices = item.find_elements(By.XPATH, ".//div[@role='radio'] | .//div[@role='checkbox']")
-                    data_values = []
-                    valid_choices = []
-                    
-                    for c in choices:
-                        val = c.get_attribute("data-value") or c.get_attribute("data-answer-value")
-                        aria = c.get_attribute("aria-label") or ""
-                        if val and val not in ["true", "false"] and not str(val).startswith("Đã chọn"):
-                            data_values.append(val)
-                            valid_choices.append((val, aria))
-                    
-                    # XỬ LÝ 1: CÂU HỎI BẢNG (GRID)
-                    if len(data_values) > 0 and len(data_values) != len(set(data_values)):
-                        columns = list(dict.fromkeys(data_values)) 
-                        
-                        rows = []
-                        for val, aria in valid_choices:
-                            row_name = aria.replace(val, "").strip(" ,:-")
-                            if row_name.lower().startswith("hàng "): row_name = row_name[5:].strip(" ,:-")
-                            if row_name and row_name not in rows:
-                                rows.append(row_name)
-                                
-                        if rows and columns:
-                            form_structure["questions"].append({
-                                "id": question_text,
-                                "text": question_text,
-                                "type": "grid",
-                                "rows": rows,
-                                "columns": columns
-                            })
-                            for c in choices:
-                                try: driver.execute_script("arguments[0].click();", c)
-                                except: pass
-                            continue
-
-                    # XỬ LÝ 2: TRẮC NGHIỆM BÌNH THƯỜNG (Radio / Checkbox)
-                    if len(set(data_values)) > 0:
-                        options = list(dict.fromkeys(data_values))
-                        q_type = "checkbox" if item.find_elements(By.XPATH, ".//div[@role='checkbox']") else "radio"
-                        
-                        form_structure["questions"].append({
-                            "id": question_text,
-                            "text": question_text,
-                            "type": q_type,
-                            "options": options
-                        })
-                        
-                        if choices:
-                            try: driver.execute_script("arguments[0].click();", choices[0])
-                            except: pass
-                        continue
-                    
-                    # XỬ LÝ 3: DROPDOWN
-                    listboxes = item.find_elements(By.XPATH, ".//div[@role='listbox']")
-                    if listboxes:
-                        try:
-                            listbox = listboxes[0]
-                            driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", listbox)
-                            time.sleep(0.5)
-                            driver.execute_script("arguments[0].click();", listbox)
-                            time.sleep(1)
-                            
-                            dropdown_options = driver.find_elements(By.XPATH, "//div[@role='option']")
-                            options = []
-                            valid_elements = []
-                            for opt in dropdown_options:
-                                val = opt.get_attribute("data-value")
-                                if val and val not in ["Chọn", "Choose", ""]:
-                                    if val not in options: 
-                                        options.append(val)
-                                        valid_elements.append(opt)
-                                        
-                            if valid_elements:
-                                driver.execute_script("arguments[0].click();", valid_elements[0])
-                            else:
-                                driver.execute_script("arguments[0].click();", listbox)
-                            time.sleep(0.5)
-                            
-                            if options:
-                                form_structure["questions"].append({
-                                    "id": question_text,
-                                    "text": question_text,
-                                    "type": "dropdown",
-                                    "options": options
-                                })
-                                continue
-                        except:
-                            pass
-                    
-                    # XỬ LÝ 4: Ô ĐIỀN CHỮ
-                    text_inputs = item.find_elements(By.XPATH, ".//input[@type='text'] | .//input[@type='email'] | .//input[@type='number'] | .//textarea")
-                    if text_inputs:
-                        form_structure["questions"].append({
-                            "id": question_text,
-                            "text": question_text,
-                            "type": "text",
-                            "default_text": "Văn bản mẫu"
-                        })
-                        
-                        try:
-                            driver.execute_script("arguments[0].value = arguments[1];", text_inputs[0], "Văn bản mẫu")
-                            driver.execute_script("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", text_inputs[0])
-                        except:
-                            pass
-                        continue
-
-                # --- XỬ LÝ CHUYỂN TRANG TỰ ĐỘNG ---
-                try:
-                    next_buttons = driver.find_elements(By.XPATH, "//div[@role='button'][.//span[contains(text(), 'Tiếp') or contains(text(), 'Next')]]")
-                    found_next = False
-                    
-                    if next_buttons:
-                        retry_click(next_buttons[0])
-                        found_next = True
-                    else:
-                        buttons = driver.find_elements(By.XPATH, "//div[@role='button']")
-                        for b in buttons:
-                            text = unicodedata.normalize('NFC', str(b.text or "").strip())
-                            if 'Tiếp' in text or 'Next' in text:
-                                retry_click(b)
-                                found_next = True
-                                break
-                                
-                    if found_next:
-                        logger.info(f" Đang tải trang {page_num + 1}...")
-                        page_num += 1
-                        time.sleep(2)
-                        continue 
-                    else:
-                        logger.info(" Đã đến trang cuối. Hoàn tất quét form!")
-                        break
-                        
-                except Exception as e:
-                    logger.error(f"Lỗi khi tìm nút chuyển trang: {e}")
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            data = None
+            for script in soup.find_all('script'):
+                if script.string and 'FB_PUBLIC_LOAD_DATA_' in script.string:
+                    raw = script.string.split('var FB_PUBLIC_LOAD_DATA_ = ')[1]
+                    raw = raw.strip()
+                    if raw.endswith(';'):
+                        raw = raw[:-1]
+                    data = json.loads(raw)
                     break
+            
+            if not data:
+                logger.error("Không tìm thấy dữ liệu form. Có thể link form yêu cầu đăng nhập hoặc không tồn tại.")
+                raise Exception("Cannot parse form data.")
+
+            items = data[1][1] # Danh sách các câu hỏi
+            
+            for item in items:
+                # Nếu không có thẻ cấu trúc nhập liệu (ví dụ ảnh, video, text mô tả) -> bỏ qua
+                if len(item) < 5 or not item[4]:
+                    continue
                     
+                question_text = item[1].strip() if item[1] else ""
+                if not question_text:
+                    continue
+                
+                # Biến định vị trùng lặp
+                if any(q['id'] == question_text for q in form_structure["questions"]):
+                    continue
+                    
+                question_type_id = item[3]
+                
+                # XỬ LÝ THEO LOẠI CÂU HỎI
+                # Grid / Matrix (Type = 7)
+                if question_type_id == 7:
+                    rows = []
+                    row_ids = {} # { "Hàng 1": "123456" }
+                    
+                    for row_data in item[4]:
+                        row_id = str(row_data[0]) if len(row_data) > 0 else ""
+                        row_name = row_data[3][0] if len(row_data) > 3 and row_data[3] else f"Row {row_id}"
+                        rows.append(row_name)
+                        row_ids[row_name] = row_id
+                        
+                    columns = []
+                    if len(item[4][0]) > 1 and item[4][0][1]:
+                        columns = [opt[0] for opt in item[4][0][1]]
+                        
+                    if rows and columns:
+                        form_structure["questions"].append({
+                            "id": question_text,
+                            "text": question_text,
+                            "type": "grid",
+                            "rows": rows,
+                            "columns": columns,
+                            "entry_ids": row_ids # Dùng để backend dễ trích xuất
+                        })
+                    continue
+                
+                # Các loại câu hỏi cơ bản
+                # 0: Text ngắn, 1: Đoạn văn
+                # 2: Radio, 3: Dropdown, 4: Checkbox
+                q_type_str = "text"
+                if question_type_id == 2: q_type_str = "radio"
+                elif question_type_id == 3: q_type_str = "dropdown"
+                elif question_type_id == 4: q_type_str = "checkbox"
+                elif question_type_id in [0, 1]: q_type_str = "text"
+                else: q_type_str = "text" # Mặc định
+                
+                entry_id = str(item[4][0][0]) if len(item[4][0]) > 0 else ""
+                options = []
+                
+                if len(item[4][0]) > 1 and item[4][0][1]:
+                    for opt in item[4][0][1]:
+                        if opt and hasattr(opt, '__getitem__') and len(opt) > 0:
+                            options.append(str(opt[0]))
+                
+                q_data = {
+                    "id": question_text,
+                    "text": question_text,
+                    "type": q_type_str,
+                    "entry_id": f"entry.{entry_id}"
+                }
+                
+                if options:
+                    q_data["options"] = options
+                elif q_type_str == "text":
+                    q_data["default_text"] = "Văn bản mẫu"
+                    
+                form_structure["questions"].append(q_data)
+                
+            logger.info("Hoàn tất quét form (Sử dụng HTTP POST architecture)!")
             return form_structure
             
         except Exception as e:
-            logger.error(f"Lỗi Parser chung: {e}")
+            logger.error(f"Lỗi Parser: {e}")
             raise e
-        finally:
-            driver.quit()
 
 if __name__ == "__main__":
-    parser = WebFormParser("https://docs.google.com/forms/d/e/...", headless=True)
-    res = parser.parse()
-    print(res)
+    import sys
+    url = sys.argv[1] if len(sys.argv) > 1 else "https://docs.google.com/forms/d/e/1FAIpQLScP_Z-t4xW6hDclJ1tPcd2y09XQibN9Bv0HHTm-G3H4B2FzLw/viewform"
+    parser = WebFormParser(url)
+    print(json.dumps(parser.parse(), indent=2, ensure_ascii=False))
