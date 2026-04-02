@@ -46,6 +46,57 @@
             </div>
         </section>
 
-    <script src="app.js?v=20260402b"></script>
+        <!-- Step 2: Ratios Configuration (Hidden initially) -->
+        <section class="glass-card hidden" id="step-2">
+            <div class="section-header">
+                <h2>2. Configure Input Ratios</h2>
+                <div class="actions">
+                    <button id="btnEqually" class="btn-secondary">Distribute Equally</button>
+                </div>
+            </div>
+            <div id="questionsContainer" class="questions-grid">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </section>
+
+        <!-- Step 3: Run Settings (Hidden initially) -->
+        <section class="glass-card hidden" id="step-3">
+            <h2>3. Run Automation</h2>
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <label for="numSubmissions">Total Submissions</label>
+                    <input type="number" id="numSubmissions" value="1" min="1" max="1000">
+                </div>
+                <div class="setting-item">
+                    <label for="numWorkers">Concurrent Workers/Threads</label>
+                    <input type="number" id="numWorkers" value="1" min="1" max="50">
+                </div>
+                <div class="setting-item toggle">
+                    <label for="headlessMode">Headless Mode (Hidden Browser)</label>
+                    <label class="switch">
+                        <input type="checkbox" id="headlessMode" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="setting-item toggle">
+                    <label for="randomMode">Random Mode (Ignore Weights)</label>
+                    <label class="switch">
+                        <input type="checkbox" id="randomMode">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="action-footer">
+                <button id="btnRun" class="btn-success">
+                    <span class="btn-text">Launch Automation 🚀</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </div>
+            <div id="runStatus" class="status-message hidden"></div>
+        </section>
+
+    </div>
+
+    <script src="app.js?v=20260402c"></script>
 </body>
 </html>

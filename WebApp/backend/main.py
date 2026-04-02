@@ -5,6 +5,8 @@ import threading
 
 from fastapi import FastAPI, BackgroundTasks, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import Dict, Any, Optional
 
@@ -14,6 +16,8 @@ from Src.filler import FormFiller
 from WebApp.backend.web_parser import WebFormParser
 
 app = FastAPI(title="AutoFormBot API")
+
+FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../frontend'))
 
 app.add_middleware(
     CORSMiddleware,
@@ -69,6 +73,14 @@ def run_bot(req: RunRequest, background_tasks: BackgroundTasks):
         return {"status": "success", "message": f"Bot started with {req.submissions} submissions across {req.workers} workers."}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# Serve frontend
+@app.get("/")
+def serve_index():
+    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+
+# Mount static assets (CSS, JS, images)
+app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn
