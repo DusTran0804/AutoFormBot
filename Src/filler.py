@@ -229,35 +229,36 @@ class FormFiller:
 
     def _submit_or_next(self, driver):
         try:
-            next_buttons = driver.find_elements(By.XPATH, "//div[@role='button'][.//span[contains(text(), 'Tiếp') or contains(text(), 'Next')]]")
-            if next_buttons:
-                retry_click(next_buttons[0])
-                logger.info(" Đã bấm nút 'Tiếp'. Đang tải trang sau...")
-                time.sleep(1)
-                return 'next'
-            
-            submit_buttons = driver.find_elements(By.XPATH, "//div[@role='button'][.//span[contains(text(), 'Gửi') or contains(text(), 'Submit')]]")
-            if submit_buttons:
-                retry_click(submit_buttons[0])
-                logger.info("✅ Đã bấm nút 'Gửi'. Hoàn thành form!")
-                time.sleep(1)
-                return 'submit'
-            
             buttons = driver.find_elements(By.XPATH, "//div[@role='button']")
             for b in buttons:
                 try:
-                    text = unicodedata.normalize('NFC', str(b.text or "").strip())
-                    if 'Tiếp' in text or 'Next' in text:
+                    raw_text = getattr(b, 'text', '').strip()
+                    if not raw_text:
+                        raw_text = str(b.get_attribute("innerText") or "").strip()
+                    if not raw_text:
+                        raw_text = str(b.get_attribute("textContent") or "").strip()
+                        
+                    text = unicodedata.normalize('NFC', raw_text).lower()
+                    
+                    if 'tiếp' in text or 'next' in text:
                         retry_click(b)
+                        logger.info(" Đã bấm nút 'Tiếp'. Đang tải trang sau...")
                         time.sleep(1)
                         return 'next'
-                    elif 'Gửi' in text or 'Submit' in text:
+                    if 'gửi' in text or 'submit' in text or 'send' in text:
                         retry_click(b)
+                        logger.info("✅ Đã bấm nút 'Gửi'. Hoàn thành form!")
                         time.sleep(1)
                         return 'submit'
-                except StaleElementReferenceException:
-                    continue # Bỏ qua nếu nút này bị cũ
+                except Exception:
+                    continue
                     
+            if buttons:
+                logger.info("⚠️ Không nhận diện được chữ trên nút, đang tiến hành bấm mù nút cuối trang...")
+                retry_click(buttons[-1])
+                time.sleep(1)
+                return 'submit'
+                
             logger.warning("Không tìm thấy nút Tiếp hoặc Gửi nào. Buộc dừng.")
             return 'submit'
         except Exception as e:
