@@ -10,8 +10,8 @@ from typing import Dict, Any, Optional
 
 # Add Src to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../Src')))
-from filler import FormFiller
-from web_parser import WebFormParser
+from Src.filler import FormFiller
+from WebApp.backend.web_parser import WebFormParser
 
 app = FastAPI(title="AutoFormBot API")
 
