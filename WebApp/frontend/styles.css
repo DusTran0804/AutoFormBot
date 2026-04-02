@@ -1,9 +1,9 @@
 :root {
     --bg-dark: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
-    --border-color: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(15, 23, 42, 0.35); /* Increased transparency from 0.7 to 0.35 */
+    --border-color: rgba(255, 255, 255, 0.15);
     --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    --text-secondary: #cbd5e1;
     --primary-color: #6366f1;
     --primary-hover: #4f46e5;
     --accent-color: #ec4899;
@@ -20,7 +20,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+    background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)), 
                 url('assets/hcmut_bg.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-primary);
