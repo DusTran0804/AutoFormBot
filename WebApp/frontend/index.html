@@ -18,7 +18,6 @@
                 <h1>AutoFormBot <span class="badge">PRO</span></h1>
             </div>
             <p class="subtitle">Automated Google Forms Submissions with Smart Weighting</p>
-            <button id="btnTutorial" class="btn-outline" style="margin-top: 15px;">📖 Hướng dẫn cấu hình Google Form</button>
         </header>
 
         <!-- Step 1: URL Input -->
@@ -32,132 +31,20 @@
                 </button>
             </div>
             <p class="helper-text error hidden" id="parseError"></p>
+
+            <div class="storylane-container" style="margin-top: 40px;">
+                <div class="divider-container" style="display: flex; align-items: center; margin-bottom: 25px;">
+                    <hr style="flex-grow: 1; border: none; border-top: 1px solid var(--border-color);">
+                    <span style="padding: 0 15px; color: var(--text-secondary); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Hoặc xem hướng dẫn tương tác trực quan</span>
+                    <hr style="flex-grow: 1; border: none; border-top: 1px solid var(--border-color);">
+                </div>
+                
+                <script async src="https://js.storylane.io/js/v2/storylane.js"></script>
+                <div class="sl-embed relative pb-[58.22%] pt-[25px] w-full h-0 scale-100" style="position:relative;padding-bottom:calc(58.22% + 25px);width:100%;height:0;transform:scale(1)">
+                    <iframe loading="lazy" class="sl-demo absolute top-0 left-0 w-full h-full border border-gray-200 shadow-sm rounded-2xl box-border" src="https://app.storylane.io/demo/cmkrv6n9o3b2?embed=inline" name="sl-embed" allow="fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid rgba(255,255,255,0.2);box-shadow:0 10px 30px rgba(0,0,0,0.5);border-radius:12px;box-sizing:border-box;"></iframe>
+                </div>
+            </div>
         </section>
-
-        <!-- Step 2: Ratios Configuration (Hidden initially) -->
-        <section class="glass-card hidden" id="step-2">
-            <div class="section-header">
-                <h2>2. Configure Input Ratios</h2>
-                <div class="actions">
-                    <button id="btnEqually" class="btn-secondary">Distribute Equally</button>
-                </div>
-            </div>
-            
-            <div id="questionsContainer" class="questions-grid">
-                <!-- Dynamically populated by JS -->
-            </div>
-        </section>
-
-        <!-- Step 3: Run Settings (Hidden initially) -->
-        <section class="glass-card hidden" id="step-3">
-            <h2>3. Run Automation</h2>
-            
-            <div class="settings-grid">
-                <div class="setting-item">
-                    <label for="numSubmissions">Total Submissions</label>
-                    <input type="number" id="numSubmissions" value="1" min="1" max="1000">
-                </div>
-                
-                <div class="setting-item">
-                    <label for="numWorkers">Concurrent Workers/Threads</label>
-                    <input type="number" id="numWorkers" value="1" min="1" max="50">
-                </div>
-                
-                <div class="setting-item toggle">
-                    <label for="headlessMode">Headless Mode (Hidden Browser)</label>
-                    <label class="switch">
-                        <input type="checkbox" id="headlessMode" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-
-                <div class="setting-item toggle">
-                    <label for="randomMode">Random Mode (Ignore Weights)</label>
-                    <label class="switch">
-                        <input type="checkbox" id="randomMode">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            
-            <div class="action-footer">
-                <button id="btnRun" class="btn-success">
-                    <span class="btn-text">Launch Automation 🚀</span>
-                    <span class="loader hidden"></span>
-                </button>
-            </div>
-            <div id="runStatus" class="status-message hidden"></div>
-        </section>
-    </div>
-
-    <!-- Tutorial Modal -->
-    <div id="tutorialModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-modal" id="closeTutorial">&times;</span>
-            <h2 style="margin-bottom: 5px;">Cấu hình Biểu mẫu</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">Làm theo các bước sau để thiết lập Google Form trước khi điền tự động.</p>
-            
-            <div class="carousel-container">
-                <div class="carousel-slide">
-                    <img class="carousel-img" src="assets/guide-1.png" alt="Guide 1">
-                    <div class="carousel-caption">Bước 1: Tại biểu mẫu của bạn, truy cập vào tab Cài đặt.</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-2.png" alt="Guide 2">
-                    <div class="carousel-caption">Bước 2: Tìm phần Câu trả lời & Thu thập địa chỉ email.</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-3.png" alt="Guide 3">
-                    <div class="carousel-caption">Bước 3: Tắt hoàn toàn việc cấu hình thu thập Email của người dùng.</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-4.png" alt="Guide 4">
-                    <div class="carousel-caption">Bước 4: Tại menu thả xuống, Chọn "Không thu thập".</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-5.png" alt="Guide 5">
-                    <div class="carousel-caption">Bước 5: Cuối cùng, TẮT mục "Giới hạn ở 1 lần trả lời" để bot có thể điền nhiều form liên tục.</div>
-                </div>
-                
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-6.png" alt="Guide 6">
-                    <div class="carousel-caption">Bước 6: Nhấn vào biểu tượng "Thêm cộng tác viên" (Add collaborators) ở góc trên bên phải.</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-7.png" alt="Guide 7">
-                    <div class="carousel-caption">Bước 7: Kéo xuống phần "Quyền truy cập chung" (General access).</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-8.png" alt="Guide 8">
-                    <div class="carousel-caption">Bước 8: Đổi cài đặt thành "Bất kỳ ai có đường liên kết" (Anyone with the link).</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-9.png" alt="Guide 9">
-                    <div class="carousel-caption">Bước 9: Bấm nút "Xong" (Done) để lưu thiết lập.</div>
-                </div>
-                <div class="carousel-slide hidden">
-                    <img class="carousel-img" src="assets/guide-10.png" alt="Guide 10">
-                    <div class="carousel-caption">Bước 10: Nhấn nút "Gửi" hoặc copy trực tiếp link để AutoFormBot sử dụng!</div>
-                </div>
-                
-                <button class="carousel-btn prev" id="cPrev">&#10094;</button>
-                <button class="carousel-btn next" id="cNext">&#10095;</button>
-            </div>
-            
-            <div class="carousel-dots" id="cDots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
-                <span class="dot" data-index="3"></span>
-                <span class="dot" data-index="4"></span>
-                <span class="dot" data-index="5"></span>
-                <span class="dot" data-index="6"></span>
-                <span class="dot" data-index="7"></span>
-                <span class="dot" data-index="8"></span>
-                <span class="dot" data-index="9"></span>
-            </div>
-        </div>
-    </div>
 
     <script src="app.js"></script>
 </body>
