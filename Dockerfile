@@ -21,9 +21,10 @@ COPY WebApp/backend/requirements-web.txt ./requirements-web.txt
 # Cài đặt thư viện Python (Kèm selenium webdriver manager)
 RUN pip install --no-cache-dir -r requirements.txt -r requirements-web.txt
 
-# Copy bộ Core (Src) và Backend (API)
+# Copy bộ Core (Src) và Backend (API) và Frontend
 COPY Src/ ./Src/
 COPY WebApp/backend/ ./WebApp/backend/
+COPY WebApp/frontend/ ./WebApp/frontend/
 
 # Khai báo port của Render
 EXPOSE 8000
