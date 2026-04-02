@@ -1,0 +1,44 @@
+# Khởi tạo Base Image với Python 3.10
+FROM python:3.10-slim
+
+# Thiết lập biến môi trường báo hiệu đang chạy trên Container/Linux
+ENV PYTHONUNBUFFERED=1
+ENV DISPLAY=:99
+
+# Cài đặt các gói hệ thống cần thiết và Google Chrome
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    unzip \
+    fonts-liberation \
+    libnss3 \
+    libgconf-2-4 \
+    libxss1 \
+    libappindicator1 \
+    libasound2 \
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Chuyển thư mục vào /app
+WORKDIR /app
+
+# Copy các tệp yêu cầu
+COPY requirements.txt .
+COPY WebApp/backend/requirements-web.txt ./requirements-web.txt
+
+# Cài đặt thư viện Python (Kèm selenium webdriver manager)
+RUN pip install --no-cache-dir -r requirements.txt -r requirements-web.txt
+
+# Copy bộ Core (Src) và Backend (API)
+COPY Src/ ./Src/
+COPY WebApp/backend/ ./WebApp/backend/
+
+# Khai báo port của Render
+EXPOSE 8000
+
+# Chạy máy chủ Uvicorn FastAPI
+CMD ["uvicorn", "WebApp.backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

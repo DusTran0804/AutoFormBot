@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: autoformbot-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free # Cảnh báo: free tier của Render có ít RAM (512MB), có thể chậm khi chạy Chrome.
+    autoDeploy: true

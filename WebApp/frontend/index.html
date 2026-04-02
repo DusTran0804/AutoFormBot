@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFormBot Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-blob blob-1"></div>
+    <div class="background-blob blob-2"></div>
+    
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="emoji">🤖</span>
+                <h1>AutoFormBot <span class="badge">PRO</span></h1>
+            </div>
+            <p class="subtitle">Automated Google Forms Submissions with Smart Weighting</p>
+        </header>
+
+        <!-- Step 1: URL Input -->
+        <section class="glass-card" id="step-1">
+            <h2>1. Extract Form Structure</h2>
+            <div class="input-group">
+                <input type="text" id="formUrl" placeholder="Paste your Google Form URL here..." autocomplete="off">
+                <button id="btnParse" class="btn-primary">
+                    <span class="btn-text">Parse Form</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </div>
+            <p class="helper-text error hidden" id="parseError"></p>
+        </section>
+
+        <!-- Step 2: Ratios Configuration (Hidden initially) -->
+        <section class="glass-card hidden" id="step-2">
+            <div class="section-header">
+                <h2>2. Configure Input Ratios</h2>
+                <div class="actions">
+                    <button id="btnEqually" class="btn-secondary">Distribute Equally</button>
+                </div>
+            </div>
+            
+            <div id="questionsContainer" class="questions-grid">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </section>
+
+        <!-- Step 3: Run Settings (Hidden initially) -->
+        <section class="glass-card hidden" id="step-3">
+            <h2>3. Run Automation</h2>
+            
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <label for="numSubmissions">Total Submissions</label>
+                    <input type="number" id="numSubmissions" value="1" min="1" max="1000">
+                </div>
+                
+                <div class="setting-item">
+                    <label for="numWorkers">Concurrent Workers/Threads</label>
+                    <input type="number" id="numWorkers" value="1" min="1" max="50">
+                </div>
+                
+                <div class="setting-item toggle">
+                    <label for="headlessMode">Headless Mode (Hidden Browser)</label>
+                    <label class="switch">
+                        <input type="checkbox" id="headlessMode" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item toggle">
+                    <label for="randomMode">Random Mode (Ignore Weights)</label>
+                    <label class="switch">
+                        <input type="checkbox" id="randomMode">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="action-footer">
+                <button id="btnRun" class="btn-success">
+                    <span class="btn-text">Launch Automation 🚀</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </div>
+            <div id="runStatus" class="status-message hidden"></div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

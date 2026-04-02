@@ -1,0 +1,152 @@
+{
+    "form_url": "https://docs.google.com/forms/d/1RcCzUj1E8cQQFHDXTJ-JL3gXrGxOlLiur98aaI9o4RA/viewform",
+    "answers": {
+        "Độ tuổi của bạn là:": {
+            "Dưới 18": 25,
+            "18-24": 25,
+            "25-34": 25,
+            "Trên 35": 25
+        },
+        "Giới tính:": {
+            "Nam": 50,
+            "Nữ": 50
+        },
+        "Bạn hiện đang sinh sống và làm việc tại khu vực/quận nào?": "Văn bản mẫu",
+        "Xung quanh bạn (môi trường sống, nơi làm việc/học tập), mọi người thường ưa chuộng các môn thể thao nào nhất?": {
+            "Bóng đá": 20,
+            "Cầu lông": 20,
+            "Pickleball": 20,
+            "Chạy bộ": 20,
+            "Gym": 20
+        },
+        "Bạn thường cập nhật thông tin về các giải đấu phong trào, hội nhóm thể thao mới qua kênh nào?": {
+            "Truyền miệng": 33.3,
+            "TikTok": 33.3,
+            "Facebook Groups": 33.3
+        },
+        "Khi quyết định tham gia một buổi giao lưu thể thao, yếu tố nào từ người khác tác động đến bạn nhiều nhất?": {
+            "Có bạn bè thân thiết đi cùng": 33.3,
+            "Lời review tốt về chất lượng sân": 33.3,
+            "Phong trào đang hot": 33.3
+        },
+        "Bạn dành bao nhiêu thời gian rảnh rỗi trong tuần cho các hoạt động thể thao?": {
+            "Dưới 1 lần/tuần": 25,
+            "1-2 lần/tuần": 25,
+            "3-4 lần/tuần": 25,
+            "Hàng ngày": 25
+        },
+        "Trong những cuộc trò chuyện với bạn bè/đồng nghiệp về thể thao, chủ đề nào thường xuyên được bàn luận nhất?": {
+            "Thiếu người chơi cùng trình độ": 25,
+            "Chi phí thuê sân bãi": 25,
+            "Kỹ năng và dụng cụ": 25,
+            "Lịch thi đấu chuyên nghiệp": 25
+        },
+        "Theo góc nhìn của bạn, tình trạng chung của các sân bãi thể thao quanh khu vực bạn sống hiện nay là gì?": {
+            "Quá tải, luôn hết sân vào giờ vàng (17h - 20h).": 33.3,
+            "Sân bắt đầu xuống cấp (mặt sân xấu, đèn tối) nhưng giá thuê vẫn cao.": 33.3,
+            "Mọc lên nhiều sân mới, cơ sở vật chất rất tốt.": 33.3
+        },
+        "Bạn thường nghe ngóng các thông tin, review về chất lượng sân bãi hoặc các giải đấu phong trào từ đâu?": {
+            "Ngồi trà đá/cafe chém gió trực tiếp với bạn bè.": 33.3,
+            "Các hội nhóm (Group) cộng đồng trên Facebook/Zalo.": 33.3,
+            "Theo dõi các KOLs/Reviewer thể thao trên TikTok.": 33.3
+        },
+        "Thói quen chi tiêu của bạn cho các hoạt động thể thao (thuê sân, mua nước, dụng cụ) thường như thế nào?": {
+            "Sẵn sàng chi đậm để có trải nghiệm tốt nhất (sân xịn, đồ xịn).": 33.3,
+            "Chỉ chi tiêu ở mức cơ bản, tìm các sân giá rẻ để tiết kiệm.": 33.3,
+            "Góp chung với team, mọi người đóng bao nhiêu mình đóng bấy nhiêu.": 33.3
+        },
+        "Điều gì khiến bạn e ngại hoặc lúng túng nhất khi muốn xin tham gia vào một nhóm (team) thể thao mới?": {
+            "Sợ trình độ của mình yếu hơn, không theo kịp team.": 25,
+            "Sợ khó hòa nhập với văn hóa, tính cách của các thành viên cũ.": 25,
+            "Không rõ quy tắc đóng quỹ, chia tiền sân bãi ra sao.": 25,
+            "Sợ bị phân biệt đối xử (ma cũ bắt nạt ma mới).": 25
+        },
+        "Mục tiêu lớn nhất (khát khao) của bạn khi duy trì việc chơi thể thao là gì?": {
+            "Đạt được thể hình đẹp": 25,
+            "Nâng cao sức khỏe tổng thể": 25,
+            "Mở rộng mối quan hệ xã hội": 25,
+            "Theo đuổi đam mê thi đấu": 25
+        },
+        "Đâu là khó khăn lớn nhất, gây nản lòng nhất khiến bạn phải hủy bỏ dự định chơi thể thao hoặc không thể duy trì lịch tập đều đặn?": {
+            "Không tìm đủ người chơi hoặc trình độ quá chênh lệch.": 25,
+            "Quá mất thời gian gọi điện hỏi lịch trống của từng sân.": 25,
+            "Thường xuyên bị \"bùng kèo\" (hủy vào phút chót).": 25,
+            "Quản lý thu chi (tiền sân, tiền nước) rắc rối, tế nhị.": 25
+        },
+        "Nếu có một nền tảng trực tuyến hỗ trợ bạn, thước đo thành công (giá trị lớn nhất) mà bạn mong đợi nền tảng này mang lại là gì?": {
+            "Tiết kiệm 80% thời gian tìm và đặt sân.": 25,
+            "Dễ dàng ghép đội, tìm được đối thủ ngang tầm chỉ trong vài phút.": 25,
+            "Minh bạch tài chính, thanh toán và chia tiền tự động.": 25,
+            "Tạo ra một cộng đồng chia sẻ đam mê thể thao văn minh.": 25
+        },
+        "Bạn mong đợi nền tảng hỗ trợ các tính năng nào sau đây?": {
+            "câu trả lời cho Tìm kiếm và đặt sân theo thời gian thực (real-time booking)": {
+                "Rất quan trọng": 33.3,
+                "Quan trọng": 33.3,
+                "Không quan trọng lắm": 33.3
+            },
+            "câu trả lời cho Tạo và quản lý đội chơi/nhóm giao lưu": {
+                "Rất quan trọng": 33.3,
+                "Quan trọng": 33.3,
+                "Không quan trọng lắm": 33.3
+            },
+            "câu trả lời cho Hệ thống xếp hạng trình độ người chơi (skill rating)": {
+                "Rất quan trọng": 33.3,
+                "Quan trọng": 33.3,
+                "Không quan trọng lắm": 33.3
+            },
+            "câu trả lời cho Thanh toán và chia sẻ chi phí tự động": {
+                "Rất quan trọng": 33.3,
+                "Quan trọng": 33.3,
+                "Không quan trọng lắm": 33.3
+            }
+        },
+        "Bạn có sẵn sàng trả phí (ví dụ: phí dịch vụ nhỏ) để sử dụng một nền tảng giải quyết được các khó khăn về thể thao (tìm sân, tìm người chơi, quản lý chi phí) một cách hiệu quả?": {
+            "Có, nếu giá trị mang lại lớn hơn chi phí": 33.3,
+            "Chỉ khi nền tảng hoàn toàn miễn phí": 33.3,
+            "Có thể, tùy thuộc vào mức phí": 33.3
+        },
+        "Bạn đánh giá mức độ khó khăn hiện tại của mình trong việc tìm người chơi/đối thủ ngang trình độ là bao nhiêu?": {
+            "1": 20,
+            "2": 20,
+            "3": 20,
+            "4": 20,
+            "5": 20
+        },
+        "Bạn quan tâm đến việc tham gia các giải đấu thể thao phong trào/không chuyên ở mức độ nào?": {
+            "Rất quan tâm, luôn tìm kiếm cơ hội thi đấu": 25,
+            "Quan tâm nhưng chỉ tham gia khi có lời mời": 25,
+            "Ít quan tâm": 25,
+            "Không quan tâm": 25
+        },
+        "Bạn sẵn lòng đi bao xa (km) từ nhà/nơi làm việc để tham gia một buổi giao lưu thể thao thú vị?": {
+            "Dưới 3 km": 25,
+            "3 - 5 km": 25,
+            "5 - 10 km": 25,
+            "Trên 10 km": 25
+        },
+        "Trong các yếu tố sau, yếu tố nào ảnh hưởng đến việc bạn chọn sân bãi để chơi thể thao?": {
+            "câu trả lời cho Chất lượng sân bãi (mặt sân, ánh sáng)": {
+                "Rất ảnh hưởng": 33.3,
+                "Bình thường": 33.3,
+                "Ít ảnh hưởng": 33.3
+            },
+            "câu trả lời cho Giá thuê sân": {
+                "Rất ảnh hưởng": 33.3,
+                "Bình thường": 33.3,
+                "Ít ảnh hưởng": 33.3
+            },
+            "câu trả lời cho Vị trí thuận tiện, dễ di chuyển": {
+                "Rất ảnh hưởng": 33.3,
+                "Bình thường": 33.3,
+                "Ít ảnh hưởng": 33.3
+            },
+            "câu trả lời cho Dịch vụ đi kèm (nước uống, giữ xe, nhà vệ sinh)": {
+                "Rất ảnh hưởng": 33.3,
+                "Bình thường": 33.3,
+                "Ít ảnh hưởng": 33.3
+            }
+        }
+    }
+}

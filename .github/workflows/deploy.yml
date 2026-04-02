@@ -1,0 +1,48 @@
+name: Deploy WebApp Frontend to GitHub Pages
+
+on:
+  # Chạy khi push code lên nhánh main
+  push:
+    branches: ["main", "master"]
+  # Cho phép chạy manual từ tag Actions
+  workflow_dispatch:
+
+# Quyền ghi (write) cần thiết để deploy lên Github Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Chỉ giữ 1 luồng deploy chạy cùng 1 lúc để tránh xung đột
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build process
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Chỉ đưa 3 file tính (html, css, js) của frontend lên Github Pages
+          path: './WebApp/frontend'
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
