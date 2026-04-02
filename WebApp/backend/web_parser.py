@@ -63,8 +63,8 @@ class WebFormParser:
                 question_type_id = item[3]
                 
                 # XỬ LÝ THEO LOẠI CÂU HỎI
-                # Grid / Matrix (Type = 7)
-                if question_type_id == 7:
+                # Grid / Matrix (Type = 7: Radio grid, Type = 11: Checkbox grid)
+                if question_type_id in [7, 11]:
                     rows = []
                     row_ids = {} # { "Hàng 1": "123456" }
                     
@@ -89,13 +89,11 @@ class WebFormParser:
                         })
                     continue
                 
-                # Các loại câu hỏi cơ bản
-                # 0: Text ngắn, 1: Đoạn văn
-                # 2: Radio, 3: Dropdown, 4: Checkbox
                 q_type_str = "text"
                 if question_type_id == 2: q_type_str = "radio"
                 elif question_type_id == 3: q_type_str = "dropdown"
                 elif question_type_id == 4: q_type_str = "checkbox"
+                elif question_type_id == 5: q_type_str = "radio" # Scale
                 elif question_type_id in [0, 1]: q_type_str = "text"
                 else: q_type_str = "text" # Mặc định
                 

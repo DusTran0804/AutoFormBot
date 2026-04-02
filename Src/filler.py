@@ -70,7 +70,7 @@ class FormFiller:
                 
                 # Check type
                 q_type = item[3]
-                if q_type == 7: # Grid
+                if q_type in [7, 11]: # Grid
                     row_ids = {}
                     for row_data in item[4]:
                         row_id = str(row_data[0]) if len(row_data) > 0 else ""
@@ -150,6 +150,8 @@ class FormFiller:
                     else:
                         ec += 1
                         logger.error(f"[Worker {worker_id}] ❌ Thất bại - HTTP {res.status_code}")
+                        logger.error(f"Response: {res.text[:500]}")
+                        logger.error(f"Payload sent: {json.dumps(payload, ensure_ascii=False)}")
                 except Exception as e:
                     ec += 1
                     logger.error(f"[Worker {worker_id}] ❌ Request Error: {e}")
