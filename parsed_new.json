@@ -1,0 +1,266 @@
+{
+  "form_url": "https://docs.google.com/forms/d/1RcCzUj1E8cQQFHDXTJ-JL3gXrGxOlLiur98aaI9o4RA/viewform",
+  "questions": [
+    {
+      "id": "Độ tuổi của bạn là:",
+      "text": "Độ tuổi của bạn là:",
+      "type": "radio",
+      "entry_id": "entry.849800514",
+      "options": [
+        "Dưới 18",
+        "18-24",
+        "25-34",
+        "Trên 35"
+      ]
+    },
+    {
+      "id": "Giới tính:",
+      "text": "Giới tính:",
+      "type": "radio",
+      "entry_id": "entry.1286061684",
+      "options": [
+        "Nam",
+        "Nữ"
+      ]
+    },
+    {
+      "id": "Bạn hiện đang sinh sống và làm việc tại khu vực/quận nào?",
+      "text": "Bạn hiện đang sinh sống và làm việc tại khu vực/quận nào?",
+      "type": "text",
+      "entry_id": "entry.704219142",
+      "default_text": "Văn bản mẫu"
+    },
+    {
+      "id": "Xung quanh bạn (môi trường sống, nơi làm việc/học tập), mọi người thường ưa chuộng các môn thể thao nào nhất?",
+      "text": "Xung quanh bạn (môi trường sống, nơi làm việc/học tập), mọi người thường ưa chuộng các môn thể thao nào nhất?",
+      "type": "radio",
+      "entry_id": "entry.88927156",
+      "options": [
+        "Bóng đá",
+        "Cầu lông",
+        "Pickleball",
+        "Chạy bộ",
+        "Gym"
+      ]
+    },
+    {
+      "id": "Bạn thường cập nhật thông tin về các giải đấu phong trào, hội nhóm thể thao mới qua kênh nào?",
+      "text": "Bạn thường cập nhật thông tin về các giải đấu phong trào, hội nhóm thể thao mới qua kênh nào?",
+      "type": "checkbox",
+      "entry_id": "entry.63195372",
+      "options": [
+        "Truyền miệng",
+        "TikTok",
+        "Facebook Groups"
+      ]
+    },
+    {
+      "id": "Khi quyết định tham gia một buổi giao lưu thể thao, yếu tố nào từ người khác tác động đến bạn nhiều nhất?",
+      "text": "Khi quyết định tham gia một buổi giao lưu thể thao, yếu tố nào từ người khác tác động đến bạn nhiều nhất?",
+      "type": "radio",
+      "entry_id": "entry.1289248676",
+      "options": [
+        "Có bạn bè thân thiết đi cùng",
+        "Lời review tốt về chất lượng sân",
+        "Phong trào đang hot"
+      ]
+    },
+    {
+      "id": "Bạn dành bao nhiêu thời gian rảnh rỗi trong tuần cho các hoạt động thể thao?",
+      "text": "Bạn dành bao nhiêu thời gian rảnh rỗi trong tuần cho các hoạt động thể thao?",
+      "type": "radio",
+      "entry_id": "entry.101591113",
+      "options": [
+        "Dưới 1 lần/tuần",
+        "1-2 lần/tuần",
+        "3-4 lần/tuần",
+        "Hàng ngày"
+      ]
+    },
+    {
+      "id": "Trong những cuộc trò chuyện với bạn bè/đồng nghiệp về thể thao, chủ đề nào thường xuyên được bàn luận nhất?",
+      "text": "Trong những cuộc trò chuyện với bạn bè/đồng nghiệp về thể thao, chủ đề nào thường xuyên được bàn luận nhất?",
+      "type": "radio",
+      "entry_id": "entry.1260973458",
+      "options": [
+        "Thiếu người chơi cùng trình độ",
+        "Chi phí thuê sân bãi",
+        "Kỹ năng và dụng cụ",
+        "Lịch thi đấu chuyên nghiệp"
+      ]
+    },
+    {
+      "id": "Theo góc nhìn của bạn, tình trạng chung của các sân bãi thể thao quanh khu vực bạn sống hiện nay là gì?",
+      "text": "Theo góc nhìn của bạn, tình trạng chung của các sân bãi thể thao quanh khu vực bạn sống hiện nay là gì?",
+      "type": "radio",
+      "entry_id": "entry.300410807",
+      "options": [
+        "Quá tải, luôn hết sân vào giờ vàng (17h - 20h).",
+        "Sân bắt đầu xuống cấp (mặt sân xấu, đèn tối) nhưng giá thuê vẫn cao.",
+        "Mọc lên nhiều sân mới, cơ sở vật chất rất tốt."
+      ]
+    },
+    {
+      "id": "Bạn thường nghe ngóng các thông tin, review về chất lượng sân bãi hoặc các giải đấu phong trào từ đâu?",
+      "text": "Bạn thường nghe ngóng các thông tin, review về chất lượng sân bãi hoặc các giải đấu phong trào từ đâu?",
+      "type": "radio",
+      "entry_id": "entry.355716386",
+      "options": [
+        "Ngồi trà đá/cafe chém gió trực tiếp với bạn bè.",
+        "Các hội nhóm (Group) cộng đồng trên Facebook/Zalo.",
+        "Theo dõi các KOLs/Reviewer thể thao trên TikTok."
+      ]
+    },
+    {
+      "id": "Thói quen chi tiêu của bạn cho các hoạt động thể thao (thuê sân, mua nước, dụng cụ) thường như thế nào?",
+      "text": "Thói quen chi tiêu của bạn cho các hoạt động thể thao (thuê sân, mua nước, dụng cụ) thường như thế nào?",
+      "type": "radio",
+      "entry_id": "entry.2096684379",
+      "options": [
+        "Sẵn sàng chi đậm để có trải nghiệm tốt nhất (sân xịn, đồ xịn).",
+        "Chỉ chi tiêu ở mức cơ bản, tìm các sân giá rẻ để tiết kiệm.",
+        "Góp chung với team, mọi người đóng bao nhiêu mình đóng bấy nhiêu."
+      ]
+    },
+    {
+      "id": "Điều gì khiến bạn e ngại hoặc lúng túng nhất khi muốn xin tham gia vào một nhóm (team) thể thao mới?",
+      "text": "Điều gì khiến bạn e ngại hoặc lúng túng nhất khi muốn xin tham gia vào một nhóm (team) thể thao mới?",
+      "type": "radio",
+      "entry_id": "entry.1088262418",
+      "options": [
+        "Sợ trình độ của mình yếu hơn, không theo kịp team.",
+        "Sợ khó hòa nhập với văn hóa, tính cách của các thành viên cũ.",
+        "Không rõ quy tắc đóng quỹ, chia tiền sân bãi ra sao.",
+        "Sợ bị phân biệt đối xử (ma cũ bắt nạt ma mới)."
+      ]
+    },
+    {
+      "id": "Mục tiêu lớn nhất (khát khao) của bạn khi duy trì việc chơi thể thao là gì?",
+      "text": "Mục tiêu lớn nhất (khát khao) của bạn khi duy trì việc chơi thể thao là gì?",
+      "type": "radio",
+      "entry_id": "entry.1073540305",
+      "options": [
+        "Đạt được thể hình đẹp",
+        "Nâng cao sức khỏe tổng thể",
+        "Mở rộng mối quan hệ xã hội",
+        "Theo đuổi đam mê thi đấu"
+      ]
+    },
+    {
+      "id": "Đâu là khó khăn lớn nhất, gây nản lòng nhất khiến bạn phải hủy bỏ dự định chơi thể thao hoặc không thể duy trì lịch tập đều đặn?",
+      "text": "Đâu là khó khăn lớn nhất, gây nản lòng nhất khiến bạn phải hủy bỏ dự định chơi thể thao hoặc không thể duy trì lịch tập đều đặn?",
+      "type": "radio",
+      "entry_id": "entry.598758747",
+      "options": [
+        "Không tìm đủ người chơi hoặc trình độ quá chênh lệch.",
+        "Quá mất thời gian gọi điện hỏi lịch trống của từng sân.",
+        "Thường xuyên bị \"bùng kèo\" (hủy vào phút chót).",
+        "Quản lý thu chi (tiền sân, tiền nước) rắc rối, tế nhị."
+      ]
+    },
+    {
+      "id": "Nếu có một nền tảng trực tuyến hỗ trợ bạn, thước đo thành công (giá trị lớn nhất) mà bạn mong đợi nền tảng này mang lại là gì?",
+      "text": "Nếu có một nền tảng trực tuyến hỗ trợ bạn, thước đo thành công (giá trị lớn nhất) mà bạn mong đợi nền tảng này mang lại là gì?",
+      "type": "radio",
+      "entry_id": "entry.297192094",
+      "options": [
+        "Tiết kiệm 80% thời gian tìm và đặt sân.",
+        "Dễ dàng ghép đội, tìm được đối thủ ngang tầm chỉ trong vài phút.",
+        "Minh bạch tài chính, thanh toán và chia tiền tự động.",
+        "Tạo ra một cộng đồng chia sẻ đam mê thể thao văn minh."
+      ]
+    },
+    {
+      "id": "Bạn mong đợi nền tảng hỗ trợ các tính năng nào sau đây?",
+      "text": "Bạn mong đợi nền tảng hỗ trợ các tính năng nào sau đây?",
+      "type": "grid",
+      "rows": [
+        "Tìm kiếm và đặt sân theo thời gian thực (real-time booking)",
+        "Tạo và quản lý đội chơi/nhóm giao lưu",
+        "Hệ thống xếp hạng trình độ người chơi (skill rating)",
+        "Thanh toán và chia sẻ chi phí tự động"
+      ],
+      "columns": [
+        "Rất quan trọng",
+        "Quan trọng",
+        "Không quan trọng lắm"
+      ],
+      "entry_ids": {
+        "Tìm kiếm và đặt sân theo thời gian thực (real-time booking)": "778311268",
+        "Tạo và quản lý đội chơi/nhóm giao lưu": "1913342475",
+        "Hệ thống xếp hạng trình độ người chơi (skill rating)": "898512264",
+        "Thanh toán và chia sẻ chi phí tự động": "329769902"
+      }
+    },
+    {
+      "id": "Bạn có sẵn sàng trả phí (ví dụ: phí dịch vụ nhỏ) để sử dụng một nền tảng giải quyết được các khó khăn về thể thao (tìm sân, tìm người chơi, quản lý chi phí) một cách hiệu quả?",
+      "text": "Bạn có sẵn sàng trả phí (ví dụ: phí dịch vụ nhỏ) để sử dụng một nền tảng giải quyết được các khó khăn về thể thao (tìm sân, tìm người chơi, quản lý chi phí) một cách hiệu quả?",
+      "type": "radio",
+      "entry_id": "entry.197086123",
+      "options": [
+        "Có, nếu giá trị mang lại lớn hơn chi phí",
+        "Chỉ khi nền tảng hoàn toàn miễn phí",
+        "Có thể, tùy thuộc vào mức phí"
+      ]
+    },
+    {
+      "id": "Bạn đánh giá mức độ khó khăn hiện tại của mình trong việc tìm người chơi/đối thủ ngang trình độ là bao nhiêu?",
+      "text": "Bạn đánh giá mức độ khó khăn hiện tại của mình trong việc tìm người chơi/đối thủ ngang trình độ là bao nhiêu?",
+      "type": "text",
+      "entry_id": "entry.877880389",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "Bạn quan tâm đến việc tham gia các giải đấu thể thao phong trào/không chuyên ở mức độ nào?",
+      "text": "Bạn quan tâm đến việc tham gia các giải đấu thể thao phong trào/không chuyên ở mức độ nào?",
+      "type": "radio",
+      "entry_id": "entry.675944538",
+      "options": [
+        "Rất quan tâm, luôn tìm kiếm cơ hội thi đấu",
+        "Quan tâm nhưng chỉ tham gia khi có lời mời",
+        "Ít quan tâm",
+        "Không quan tâm"
+      ]
+    },
+    {
+      "id": "Bạn sẵn lòng đi bao xa (km) từ nhà/nơi làm việc để tham gia một buổi giao lưu thể thao thú vị?",
+      "text": "Bạn sẵn lòng đi bao xa (km) từ nhà/nơi làm việc để tham gia một buổi giao lưu thể thao thú vị?",
+      "type": "dropdown",
+      "entry_id": "entry.1200848772",
+      "options": [
+        "Dưới 3 km",
+        "3 - 5 km",
+        "5 - 10 km",
+        "Trên 10 km"
+      ]
+    },
+    {
+      "id": "Trong các yếu tố sau, yếu tố nào ảnh hưởng đến việc bạn chọn sân bãi để chơi thể thao?",
+      "text": "Trong các yếu tố sau, yếu tố nào ảnh hưởng đến việc bạn chọn sân bãi để chơi thể thao?",
+      "type": "grid",
+      "rows": [
+        "Chất lượng sân bãi (mặt sân, ánh sáng)",
+        "Giá thuê sân",
+        "Vị trí thuận tiện, dễ di chuyển",
+        "Dịch vụ đi kèm (nước uống, giữ xe, nhà vệ sinh)"
+      ],
+      "columns": [
+        "Rất ảnh hưởng",
+        "Bình thường",
+        "Ít ảnh hưởng"
+      ],
+      "entry_ids": {
+        "Chất lượng sân bãi (mặt sân, ánh sáng)": "1228022053",
+        "Giá thuê sân": "724912940",
+        "Vị trí thuận tiện, dễ di chuyển": "1024982285",
+        "Dịch vụ đi kèm (nước uống, giữ xe, nhà vệ sinh)": "1804319639"
+      }
+    }
+  ]
+}
